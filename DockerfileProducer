@@ -1,0 +1,15 @@
+# Use an official Python runtime as a parent image
+FROM python:3.9
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the Kafka producer script into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install kafka-python requests
+RUN pip install python-dotenv pymongo
+RUN pip install pandas
+# Run the Kafka producer script
+CMD ["python", "producer.py"]
